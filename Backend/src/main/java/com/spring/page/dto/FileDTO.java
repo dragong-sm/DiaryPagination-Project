@@ -1,6 +1,8 @@
 package com.spring.page.dto;
 
 
+import com.spring.page.entity.File;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
