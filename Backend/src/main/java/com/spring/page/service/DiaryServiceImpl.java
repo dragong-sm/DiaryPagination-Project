@@ -21,7 +21,7 @@ public class DiaryServiceImpl implements DiaryService {
 	@Autowired
 	DiaryRepository diaryRepository;
 
-
+ 
 	@Override
 	public DiaryDTO getDiary(Long diaryNo) {
 		Optional<Diary> diary = diaryRepository.findById(diaryNo);
