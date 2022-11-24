@@ -19,8 +19,10 @@ import com.spring.page.repository.DiaryRepository;
 @Service
 public class DiaryServiceImpl implements DiaryService {
 	@Autowired
-	DiaryRepository diaryRepo;
 
+	DiaryRepository diaryRepository;
+
+ 
 	@Override
 	public DiaryDTO getDiary(Long diaryNo) {
 		Optional<Diary> diary = diaryRepo.findById(diaryNo);
