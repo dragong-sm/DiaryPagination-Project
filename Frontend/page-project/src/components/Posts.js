@@ -4,7 +4,7 @@
 // 번호, 제목, 수정일시
 
 import React from "react";
-// import styled from "styled-components";
+import styled from "styled-components";
 
 const Posts = () => {
   //
