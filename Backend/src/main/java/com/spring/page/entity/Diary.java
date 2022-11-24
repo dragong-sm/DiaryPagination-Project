@@ -45,7 +45,12 @@ public class Diary {
 	
 	@LastModifiedDate
 	private LocalDateTime modifiedDate;
-
+	
+	public void updateDiary(DiaryDTO diaryDTO) {
+		this.title = diaryDTO.getTitle();
+		this.content = diaryDTO.getContent();
+	}
+	
 	// Entity -> DTO
 	public static DiaryDTO entityToDTO(Diary diary) {
 		DiaryDTO diaryDTO = DiaryDTO.builder()
