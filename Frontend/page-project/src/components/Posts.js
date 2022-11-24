@@ -26,8 +26,7 @@ const Posts = ({ data, currentPage, postsPerPage }) => {
               <a
                 id="link"
                 href={`http://localhost:3001/content/${currentPage}/${post.no}`}
-                // curretPage 가 어디인지도 파라미터로 넘어와야 데이터가 제대로 넘겨지는 것 같아요 !
-                // 근데 아직 contentPage에서 pageNo가 undefined로 뜨는걸 해결을 못해서 .. 고민이 필요..
+                // curretPage 가 어디인지도 파라미터로 넘어와야 해당 페이지의 게시글들 데이터가 제대로 넘겨짐
               >
                 {/* post.no를 파라미터로 전달하여 해당 게시글의 내용만 불러올 수 있도록 link 설정 */}
                 {post.title} - {post.modifiedDate}

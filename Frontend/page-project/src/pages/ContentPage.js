@@ -12,8 +12,11 @@ function ContentPage({ posts }) {
 
   const { pageNo, postNo } = useParams();
   // console.log(typeof parseInt(postNo));
-  console.log("pageNo" + pageNo); // 왜 .. undefined로 뜰까 .. 해결하자
-  console.log("postNo" + postNo);
+  console.log("pageNo : " + pageNo);
+  console.log("postNo : " + postNo);
+
+  // ex) 5페이지(pageNo)의 23번게시물(postNo)
+  // pageNo를 이용해서 post 가져오는 방법 생각해보기 !
 
   return (
     <div>
