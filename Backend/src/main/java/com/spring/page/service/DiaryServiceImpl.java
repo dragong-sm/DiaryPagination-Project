@@ -6,6 +6,7 @@ import java.util.function.Function;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import com.spring.page.common.dto.PageRequestDTO;
 import com.spring.page.common.dto.PageResultDTO;
@@ -13,6 +14,7 @@ import com.spring.page.dto.DiaryDTO;
 import com.spring.page.entity.Diary;
 import com.spring.page.repository.DiaryRepository;
 
+@Service
 public class DiaryServiceImpl implements DiaryService {
 	@Autowired
 	DiaryRepository diaryRepository;
@@ -39,4 +41,6 @@ public class DiaryServiceImpl implements DiaryService {
 		
 		return new PageResultDTO<DiaryDTO, Diary>(result, fn);
 	}
+
+
 }
