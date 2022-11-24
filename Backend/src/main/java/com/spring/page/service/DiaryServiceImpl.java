@@ -1,7 +1,9 @@
 package com.spring.page.service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -58,4 +60,23 @@ public class DiaryServiceImpl implements DiaryService {
 		diaryRepo.delete(diary);
 	}
 	
+		Page<Diary> result = diaryRepository.findAll(pageable);
+
+		Function<Diary, DiaryDTO> fn = (diary -> Diary.entityToDTO(diary));
+		
+		return new PageResultDTO<DiaryDTO, Diary>(result, fn);
+	}
+
+
+	@Override
+	public void insertBatchData(List<DiaryDTO> diaryList) {
+		
+		List<Diary> entities = diaryList.stream()
+										.map(diaryDTO -> diaryDTO.dtoToEntity(diaryDTO))
+										.collect(Collectors.toList());
+		
+		diaryRepository.saveAll(entities);
+	}
+
+
 }

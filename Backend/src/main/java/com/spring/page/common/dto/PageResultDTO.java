@@ -38,7 +38,7 @@ public class PageResultDTO<DTO, EN> {
 		this.dtoList = result.stream()	//Entity로 이루어진 Page를 stream을 통해 DTO로 변환 -> List에 저장
 							 .map(fn)
 							 .collect(Collectors.toList());
-		
+
 		this.totalPage = result.getTotalPages();
 		
 		// 
