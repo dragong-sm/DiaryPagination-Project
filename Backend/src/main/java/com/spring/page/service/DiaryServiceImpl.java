@@ -19,11 +19,11 @@ import com.spring.page.repository.DiaryRepository;
 @Service
 public class DiaryServiceImpl implements DiaryService {
 	@Autowired
-	DiaryRepository diaryRepo;
+	DiaryRepository diaryRepository;
 
 	@Override
 	public DiaryDTO getDiary(Long diaryNo) {
-		Optional<Diary> diary = diaryRepo.findById(diaryNo);
+		Optional<Diary> diary = diaryRepository.findById(diaryNo);
 		if (diary.isPresent()) {
 			return Diary.entityToDTO(diary.get());
 		} else {
@@ -36,7 +36,7 @@ public class DiaryServiceImpl implements DiaryService {
 	public PageResultDTO getDiaryList(PageRequestDTO requestDTO) {
 		Pageable pageable = requestDTO.getPageable();
 		
-		Page<Diary> result = diaryRepo.findAll(pageable);
+		Page<Diary> result = diaryRepository.findAll(pageable);
 		
 		Function<Diary, DiaryDTO> fn = (diary -> diary.entityToDTO(diary));
 		
@@ -45,27 +45,28 @@ public class DiaryServiceImpl implements DiaryService {
 	
 	public Long insertDiary(DiaryDTO diaryDTO) {
 		Diary diary = diaryDTO.dtoToEntity(diaryDTO);
-		return diaryRepo.save(diary).getNo();			
+		return diaryRepository.save(diary).getNo();			
 	}
 	
 	public void updateDiary(Long diaryNo, DiaryDTO diaryDTO) {
-		Diary diary = diaryRepo.getDiaryByNo(diaryNo);
+		Diary diary = diaryRepository.getDiaryByNo(diaryNo);
 		diary.updateDiary(diaryDTO);
-		diaryRepo.flush();
+		diaryRepository.flush();
 	}
 	
 	@Override
 	public void deleteDiary(Long diaryNo) {
-		Diary diary = diaryRepo.getDiaryByNo(diaryNo);
-		diaryRepo.delete(diary);
+		Diary diary = diaryRepository.getDiaryByNo(diaryNo);
+		diaryRepository.delete(diary);
 	}
-	
+	///
 		Page<Diary> result = diaryRepository.findAll(pageable);
 
 		Function<Diary, DiaryDTO> fn = (diary -> Diary.entityToDTO(diary));
 		
 		return new PageResultDTO<DiaryDTO, Diary>(result, fn);
 	}
+}
 
 
 	@Override
