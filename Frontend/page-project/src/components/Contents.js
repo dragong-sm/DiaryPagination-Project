@@ -1,16 +1,21 @@
 // 내용부분
-// 뒤로가기버튼(goBackBtn), 수정버튼(editBtn)
 
 import React from "react";
 import styled from "styled-components";
 
-const Contents = (contents) => {
-  console.log(contents);
+// 뒤로가기버튼(goBackBtn), 수정버튼(editBtn)
+
+const Contents = ({ contents }) => {
+  // console.log(contents);
   return (
     <div>
       <h3>내용</h3>
-      {/* {contents} */}
-      <button>수정</button>
+      <div>{contents}</div>
+      <hr></hr>
+      <a href="http://localhost:3001/">
+        <button>🏡 Home</button>
+      </a>
+      <button>🔨 Edit</button>
     </div>
   );
 };
