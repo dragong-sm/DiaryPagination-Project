@@ -2,6 +2,7 @@ package com.spring.page.dto;
 
 import java.time.LocalDateTime;
 
+import com.spring.page.entity.Diary;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
