@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.spring.page.dto.FileDTO;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -37,6 +39,15 @@ public class File {
 	
 	public void updateDiary(Diary diary) {
 		this.diary = diary;
+	}
+	
+	public FileDTO entityToDTO(File file) {
+		FileDTO fileDTO = FileDTO.builder()
+								.originalFileName(file.getOriginalFileName())
+								.fileName(file.getFileName())
+								.filePath(file.getFilePath())
+								.build();
+		return fileDTO;
 	}
 	
 }

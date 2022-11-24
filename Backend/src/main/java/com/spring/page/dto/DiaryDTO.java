@@ -29,6 +29,4 @@ public class DiaryDTO {
 							.build();
 		return diary;
 	}
-	
-	
 }

@@ -18,7 +18,7 @@ public class FileDTO {
 	private String filePath;
 	
 	// DTO -> Entity
-	public File dtoToEntity(FileDTO fileDTO) {
+	public static File dtoToEntity(FileDTO fileDTO) {
 		File file = File.builder()
 						.originalFileName(fileDTO.getOriginalFileName())
 						.fileName(fileDTO.getFileName())
