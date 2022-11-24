@@ -1,5 +1,14 @@
 package com.spring.page.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.spring.page.common.dto.PageRequestDTO;
+import com.spring.page.dto.DiaryDTO;
+
+@RestController
 public class DiaryController {
   @GetMapping("/diary/{diaryNo}") 
 	public DiaryDTO getDiary(@PathVariable("diaryNo") Long diaryNo) {
