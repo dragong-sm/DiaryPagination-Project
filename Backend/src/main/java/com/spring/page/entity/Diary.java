@@ -50,6 +50,8 @@ public class Diary {
 	@LastModifiedDate
 	private LocalDateTime modifiedDate;
 	
+	private File file;
+	
 	public void updateDiary(DiaryDTO diaryDTO) {
 		this.title = diaryDTO.getTitle();
 		this.content = diaryDTO.getContent();

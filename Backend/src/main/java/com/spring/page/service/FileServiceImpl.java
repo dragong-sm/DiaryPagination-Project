@@ -11,7 +11,7 @@ import com.spring.page.entity.File;
 import com.spring.page.repository.DiaryRepository;
 import com.spring.page.repository.FileRepository;
 
-public class FileServiceImpl {
+public class FileServiceImpl implements FileService {
 	
 	@Autowired
 	FileRepository fileRepo;

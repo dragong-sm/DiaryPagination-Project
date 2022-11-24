@@ -19,7 +19,7 @@ public class DiaryDTO {
 	private String content;
 	private LocalDateTime createdDate;
 	private LocalDateTime modifiedDate;
-	
+	private FileDTO fileDTO;
 	
 	// DTO -> Entity
 	public Diary dtoToEntity(DiaryDTO diaryDTO) {
