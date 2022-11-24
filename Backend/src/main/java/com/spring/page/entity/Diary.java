@@ -1,13 +1,17 @@
 package com.spring.page.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -45,6 +49,17 @@ public class Diary {
 	
 	@LastModifiedDate
 	private LocalDateTime modifiedDate;
+	
+	public void updateDiary(DiaryDTO diaryDTO) {
+		this.title = diaryDTO.getTitle();
+		this.content = diaryDTO.getContent();
+	}
+
+	//File(의 주소)들을 join을 통해 가져온다 -> oneToMany
+	@OneToMany(mappedBy = "diary", cascade = CascadeType.ALL) //mappedBy = "diary" -> File.java의 diary가 주체가 된다.
+//	@JoinColumn(name = "diary_no")
+	private List<File> files;
+
 
 	// Entity -> DTO
 	public static DiaryDTO entityToDTO(Diary diary) {

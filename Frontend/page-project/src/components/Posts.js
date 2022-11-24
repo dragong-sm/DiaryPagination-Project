@@ -5,9 +5,8 @@
 
 // 할일: onClick으로 객체 전달
 // dtoList에서 넘버 하나씩 자르기
-
-import React, { useEffect } from "react";
 import styled from "styled-components";
+import React, { useEffect } from "react";
 
 const Posts = ({ posts, currentPage, postsPerPage }) => {
   //
