@@ -7,7 +7,7 @@ import React from "react";
 import styled from "styled-components";
 
 const PageUl = styled.ul`
-  float: left;
+  float: center;
   list-style: none;
   text-align: center;
   border-radius: 3px;
@@ -45,18 +45,20 @@ const PageSpan = styled.span`
   }
 `;
 
-const Pagination = ({ posts, postsPerPage, setCurrentPage }) => {
+const Pagination = ({ data, postsPerPage, setCurrentPage }) => {
   return (
     <div>
       <nav>
         <PageUl>
-          {posts.prev ? (
-            <PageLi onClick={() => setCurrentPage(posts.start - 10)}>←</PageLi>
+          {data.prev ? (
+            // 이전버튼
+            <PageLi onClick={() => setCurrentPage(data.start - 10)}>◀</PageLi>
           ) : (
             <></>
           )}
-          {posts.pageList ? (
-            posts.pageList.map((pageNumber) => (
+          {data.pageList ? (
+            // 페이지번호 표시
+            data.pageList.map((pageNumber) => (
               <PageLi key={pageNumber}>
                 <PageSpan onClick={() => setCurrentPage(pageNumber)}>
                   {pageNumber}
@@ -66,8 +68,9 @@ const Pagination = ({ posts, postsPerPage, setCurrentPage }) => {
           ) : (
             <></>
           )}
-          {posts.next ? (
-            <PageLi onClick={() => setCurrentPage(posts.start + 10)}>→</PageLi>
+          {data.next ? (
+            // 다음버튼
+            <PageLi onClick={() => setCurrentPage(data.start + 10)}>▶</PageLi>
           ) : (
             <></>
           )}

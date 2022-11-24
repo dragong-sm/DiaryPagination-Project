@@ -21,15 +21,17 @@ function App() {
   // console.log(data);
   // console.log(data.dtoList);
 
+  // console.log(currentPage);
+
   return (
     <div className="App">
       <Routes>
-        {/* HomePage */}
+        {/* 메인페이지 : HomePage */}
         <Route
           path="/"
           element={
             <HomePage
-              posts={data}
+              data={data}
               currentPage={currentPage}
               postsPerPage={postsPerPage}
               setCurrentPage={setCurrentPage}
@@ -37,12 +39,12 @@ function App() {
             />
           }
         />
-        {/* ContentPage */}
+        {/* 게시글내용 : ContentPage */}
         <Route
-          path="/content/:postNo"
+          path="/content/:pageNo/:postNo"
           element={<ContentPage posts={data.dtoList} />}
         />
-        {/* ErrorPage */}
+        {/* 에러 : ErrorPage */}
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
