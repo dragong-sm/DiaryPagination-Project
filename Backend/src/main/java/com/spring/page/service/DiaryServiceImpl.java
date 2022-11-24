@@ -38,7 +38,7 @@ public class DiaryServiceImpl implements DiaryService {
 		
 		Page<Diary> result = diaryRepository.findAll(pageable);
 		
-		Function<Diary, DiaryDTO> fn = (diary -> diary.entityToDTO(diary));
+		Function<Diary, DiaryDTO> fn = (diary -> Diary.entityToDTO(diary));
 		
 		return new PageResultDTO<DiaryDTO, Diary>(result, fn);
 	}
@@ -59,15 +59,6 @@ public class DiaryServiceImpl implements DiaryService {
 		Diary diary = diaryRepository.getDiaryByNo(diaryNo);
 		diaryRepository.delete(diary);
 	}
-	///
-		Page<Diary> result = diaryRepository.findAll(pageable);
-
-		Function<Diary, DiaryDTO> fn = (diary -> Diary.entityToDTO(diary));
-		
-		return new PageResultDTO<DiaryDTO, Diary>(result, fn);
-	}
-}
-
 
 	@Override
 	public void insertBatchData(List<DiaryDTO> diaryList) {

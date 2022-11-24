@@ -28,8 +28,11 @@ public class DiaryController {
 	@Autowired
 	DiaryServiceImpl diaryService;
 	
+	@Autowired
+	FileServiceImpl fileService;
+	
 	//1. Diary 번호로 조회
-  @GetMapping("/diary/{diaryNo}") 
+	@GetMapping("/diary/{diaryNo}") 
 	public DiaryDTO getDiary(@PathVariable("diaryNo") Long diaryNo) {
 		return diaryService.getDiary(diaryNo);
 	}
