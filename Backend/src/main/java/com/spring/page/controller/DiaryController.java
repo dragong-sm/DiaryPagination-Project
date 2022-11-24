@@ -14,18 +14,19 @@ import com.spring.page.service.DiaryServiceImpl;
 
 @RestController
 public class DiaryController {	
-	
+
 	@Autowired
 	DiaryServiceImpl diaryService;
 	
-
+	//1. Diary 번호로 조회
   @GetMapping("/diary/{diaryNo}") 
 	public DiaryDTO getDiary(@PathVariable("diaryNo") Long diaryNo) {
 		return diaryService.getDiary(diaryNo);
 	}
 
-	@GetMapping("/diary") //method for getting diary list
-	public PageResultDTO getDiaryList(@RequestParam("size") int size, @RequestParam("page") int page) {
+	//2. Diary 목록 조회 - 페이징 처리 포함
+	@GetMapping("/diary") 
+	public PageResultDTO getDiaryList(@RequestParam int size, @RequestParam int page) {
 		PageRequestDTO pageRequestDTO = new PageRequestDTO(page, size); //파라미터를 받아서 Service에 넘겨주기 위한 PageRequestDTO 생성
 		return diaryService.getDiaryList(pageRequestDTO);
 	}

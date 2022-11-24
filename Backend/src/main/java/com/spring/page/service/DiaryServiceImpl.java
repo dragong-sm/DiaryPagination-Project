@@ -36,8 +36,8 @@ public class DiaryServiceImpl implements DiaryService {
 		Pageable pageable = requestDTO.getPageable();
 		
 		Page<Diary> result = diaryRepository.findAll(pageable);
-		
-		Function<Diary, DiaryDTO> fn = (diary -> diary.entityToDTO(diary));
+
+		Function<Diary, DiaryDTO> fn = (diary -> Diary.entityToDTO(diary));
 		
 		return new PageResultDTO<DiaryDTO, Diary>(result, fn);
 	}
