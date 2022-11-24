@@ -19,10 +19,10 @@ public class PageRequestDTO {
 	private int page;
 	private int size;
 	
-	public PageRequestDTO(page, size) {
-		this.page = page;
-		this.size = size;
-	}
+//	public PageRequestDTO(page, size) {
+//		this.page = page;
+//		this.size = size;
+//	}
 	
 	public Pageable getPageable() {
 		return PageRequest.of(page - 1, size); //create pageRequest with page and size (page starts from 0)
