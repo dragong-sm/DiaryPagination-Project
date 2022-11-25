@@ -33,4 +33,15 @@ public class FileServiceImpl implements FileService {
 		
 		fileEntity.updateDiary(diary); 
 		fileRepo.save(fileEntity);
-	}}
+	}
+	
+	public String getUrl(Long fileId) {
+		File file = fileRepo.getFileByNo(fileId);
+		return file.getFilePath();
+	}
+
+	public String getFileName(Long fileId) {
+		File file = fileRepo.getFileByNo(fileId);
+		return file.getFileName();
+	}
+}

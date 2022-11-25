@@ -22,6 +22,9 @@ function App() {
   // console.log(data);
   // console.log(data.dtoList);
 
+  const [currentPost, setCurrentPost] = useState([]);
+  // console.log("currentPost" + currentPost);
+
   return (
     <div className="App">
       <Routes>
@@ -41,12 +44,12 @@ function App() {
         {/* 게시글내용 : ContentPage */}
         <Route
           path="/content/:currentPage/:postNo"
-          element={<ContentPage postsPerPage={postsPerPage} />}
+          element={<ContentPage setCurrentPost={setCurrentPost} />}
         ></Route>
         {/* 게시글 수정 : EditPage */}
         <Route
           path="content/:currentPage/:postNo/edit-post"
-          element={<EditPage />}
+          element={<EditPage currentPost={currentPost} />}
         />
         {/* 에러 : ErrorPage */}
         <Route path="*" element={<ErrorPage />} />
