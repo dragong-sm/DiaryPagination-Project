@@ -10,31 +10,31 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.spring.page.common.dto.PageRequestDTO;
 import com.spring.page.common.dto.PageResultDTO;
 import com.spring.page.dto.DiaryDTO;
 import com.spring.page.entity.Diary;
+import com.spring.page.entity.File;
 import com.spring.page.repository.DiaryRepository;
+import com.spring.page.repository.FileRepository;
 
 @Service
 public class DiaryServiceImpl implements DiaryService {
+	
 	@Autowired
 	DiaryRepository diaryRepository;
-
+	
+	@Autowired
+	FileRepository fileRepository;
+	
 	@Override
 	public DiaryDTO getDiary(Long diaryNo) {
 		Optional<Diary> diary = diaryRepository.findById(diaryNo);
-		if (diary.isPresent()) {
-			return Diary.entityToDTO(diary.get());
-		} else {
-			//다이어리가 존재하지 않는다는 에러처리!
-			return null;
+		System.out.println(diary);
+		return Diary.entityToDTO(diary.get());
 		}
-	}
 
 	@Override
-	public PageResultDTO getDiaryList(PageRequestDTO requestDTO) {
-		Pageable pageable = requestDTO.getPageable();
+	public PageResultDTO getDiaryList(Pageable pageable) {
 		
 		Page<Diary> result = diaryRepository.findAll(pageable);
 		
@@ -43,11 +43,13 @@ public class DiaryServiceImpl implements DiaryService {
 		return new PageResultDTO<DiaryDTO, Diary>(result, fn);
 	}
 	
+	@Override
 	public Long insertDiary(DiaryDTO diaryDTO) {
 		Diary diary = diaryDTO.dtoToEntity(diaryDTO);
 		return diaryRepository.save(diary).getNo();			
 	}
 	
+	@Override
 	public void updateDiary(Long diaryNo, DiaryDTO diaryDTO) {
 		Diary diary = diaryRepository.getDiaryByNo(diaryNo);
 		diary.updateDiary(diaryDTO);
@@ -66,7 +68,6 @@ public class DiaryServiceImpl implements DiaryService {
 		List<Diary> entities = diaryList.stream()
 										.map(diaryDTO -> diaryDTO.dtoToEntity(diaryDTO))
 										.collect(Collectors.toList());
-		
 		diaryRepository.saveAll(entities);
 	}
 

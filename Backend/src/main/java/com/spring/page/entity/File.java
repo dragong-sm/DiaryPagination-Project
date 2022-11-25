@@ -21,7 +21,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString
+@ToString(exclude = "diary")
 @Builder
 public class File {
 	@Id
@@ -29,7 +29,7 @@ public class File {
 	@Column(name = "file_no", nullable = false)
 	private Long no;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY) // 하나의 Diary에는 여러개의 File이 들어갈 수 있음 
 	@JoinColumn(name = "diary_no")
 	private Diary diary;
 	
