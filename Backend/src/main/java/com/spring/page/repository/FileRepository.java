@@ -15,4 +15,6 @@ public interface FileRepository extends JpaRepository<File, Long> {
 	
 	@Query("SELECT f FROM File f WHERE f.diary.no = :diaryNo")
 	public List<File> getFileByDiaryNo(@Param("diaryNo") Long diaryNo); // @Query가 쿼리 메소드 보다 우선순위
+	
+	public File getFileByNo(Long fileId);
 }
