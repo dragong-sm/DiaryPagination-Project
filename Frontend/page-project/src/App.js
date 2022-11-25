@@ -1,4 +1,4 @@
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
 import HomePage from "./pages/HomePage";
 import ContentPage from "./pages/ContentPage";
@@ -7,6 +7,7 @@ import { Route, Router, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getDiarys } from "./api/getDiarys";
 import axios from "axios";
+import EditPage from "./pages/EditPage";
 
 function App() {
   const [data, setData] = useState([]); // 불러온 data
@@ -20,8 +21,6 @@ function App() {
 
   // console.log(data);
   // console.log(data.dtoList);
-
-  // console.log(currentPage);
 
   return (
     <div className="App">
@@ -41,9 +40,11 @@ function App() {
         />
         {/* 게시글내용 : ContentPage */}
         <Route
-          path="/content/:pageNo/:postNo"
-          element={<ContentPage posts={data.dtoList} />}
+          path="/content/:currentPage/:postNo"
+          element={<ContentPage postsPerPage={postsPerPage} />}
         />
+        {/* 게시글 수정 : EditPage */}
+        <Route path="/edit/:currentPage/:postNo" element={<EditPage />} />
         {/* 에러 : ErrorPage */}
         <Route path="*" element={<ErrorPage />} />
       </Routes>

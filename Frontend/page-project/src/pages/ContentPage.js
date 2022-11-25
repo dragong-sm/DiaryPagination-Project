@@ -1,47 +1,40 @@
 // 콘텐츠 페이지
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { getDiary } from "../api/getDiary";
 import Article from "../components/Article";
 import Contents from "../components/Contents";
-import ErrorPage from "./ErrorPage";
 
-function ContentPage({ posts }) {
-  console.log(posts);
+function ContentPage() {
+  const [post, setPost] = useState([]); // post 한개만 불러오기
 
-  const { pageNo, postNo } = useParams();
+  const { currentPage, postNo } = useParams(); // parameter
   // console.log(typeof parseInt(postNo));
-  console.log("pageNo : " + pageNo);
-  console.log("postNo : " + postNo);
+  // console.log("currentPage: " + currentPage);
+  // console.log("postNo : " + postNo);
 
-  // ex) 5페이지(pageNo)의 23번게시물(postNo)
-  // pageNo를 이용해서 post 가져오는 방법 생각해보기 !
+  //  n번게시물(postNo) 불러오기 : getDiary(postNo, setPost)
+  useEffect(() => {
+    getDiary({ postNo, setPost }); // api 사용
+  }, [currentPage]);
+
+  console.log(post); // test
 
   return (
     <div>
       <h1>Site Name - ContentPage</h1>
       <ul>
-        {/* posts 값이 있다면 풀어주고 아니라면 ErrorPage*/}
-        {posts ? (
-          posts.map((post) => (
-            <div key={post.no}>
-              {/* postNo(파라미터)값이 post.no 와 같다면 content 보여주고 아니라면 Errorpage */}
-              {/* postNo는 String 타입이므로 parseInt를 이용해 number 타입으로 변경 */}
-              {post.no === parseInt(postNo) ? (
-                <div>
-                  {/* <h1>true : {post.no}</h1> */} {/* testCode */}
-                  <Article post={post}></Article>
-                  <Contents contents={post.content}></Contents>
-                </div>
-              ) : (
-                <>
-                  {/* <h4>false : {post.no}</h4> */}
-                  <></>
-                </>
-              )}
-            </div>
-          ))
+        {post ? (
+          <div>
+            <Article post={post}></Article>
+            <Contents
+              contents={post.content}
+              currentPage={currentPage}
+              postNo={postNo}
+            ></Contents>
+          </div>
         ) : (
           <></>
         )}

@@ -1,7 +1,7 @@
 // 메인 페이지
 
-import styled from "styled-components";
-import React, { useEffect, useState } from "react";
+// import styled from "styled-components";
+import React from "react";
 import Pagination from "../components/Pagination";
 import Posts from "../components/Posts";
 
