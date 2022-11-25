@@ -7,6 +7,7 @@ import java.util.stream.IntStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,6 +24,7 @@ import com.spring.page.dto.DiaryDTO;
 import com.spring.page.service.DiaryServiceImpl;
 import com.spring.page.service.FileServiceImpl;
 
+@CrossOrigin({"*"})
 @RestController
 public class DiaryController {	
 
@@ -31,7 +33,7 @@ public class DiaryController {
 	
 	@Autowired
 	FileServiceImpl fileService;
-	
+	 
 	//1. Diary 번호로 조회
 	@GetMapping("/diary/{diaryNo}") 
 	public DiaryDTO getDiary(@PathVariable("diaryNo") Long diaryNo) {

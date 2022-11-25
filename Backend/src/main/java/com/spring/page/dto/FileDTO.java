@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class FileDTO {
+	private Long no;
 	private String originalFileName;
 	private String fileName;
 	private String filePath;
@@ -20,6 +21,7 @@ public class FileDTO {
 	// DTO -> Entity
 	public static File dtoToEntity(FileDTO fileDTO) {
 		File file = File.builder()
+						.no(fileDTO.getNo())
 						.originalFileName(fileDTO.getOriginalFileName())
 						.fileName(fileDTO.getFileName())
 						.filePath(fileDTO.getFilePath())
