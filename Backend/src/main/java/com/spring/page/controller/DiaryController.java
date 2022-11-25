@@ -42,7 +42,7 @@ public class DiaryController {
 	
 	@Autowired
 	FileServiceImpl fileService;
-	
+	 
 	//1. Diary 번호로 조회
 	@GetMapping("/diary/{diaryNo}") 
 	public DiaryDTO getDiary(@PathVariable("diaryNo") Long diaryNo) {
