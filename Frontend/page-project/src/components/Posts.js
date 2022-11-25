@@ -11,6 +11,8 @@ import React, { useEffect } from "react";
 import ErrorPage from "../pages/ErrorPage";
 
 const Posts = ({ data, currentPage, postsPerPage }) => {
+  // console.log(data);
+
   // 게시글리스트 : dtoList
   const posts = data.dtoList;
 
