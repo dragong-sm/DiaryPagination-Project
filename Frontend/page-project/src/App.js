@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { getDiarys } from "./api/getDiarys";
 import axios from "axios";
 import EditPage from "./pages/EditPage";
+import InsertPage from "./pages/InsertPage";
 
 function App() {
   const [data, setData] = useState([]); // 불러온 data
@@ -48,6 +49,8 @@ function App() {
           path="content/:currentPage/:postNo/edit-post"
           element={<EditPage />}
         />
+        {/* 게시글 등록: InsertPage */}
+        <Route path="/insert" element={<InsertPage />} />
         {/* 에러 : ErrorPage */}
         <Route path="*" element={<ErrorPage />} />
       </Routes>
