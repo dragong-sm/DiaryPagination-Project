@@ -7,8 +7,8 @@ import { useEffect, useState } from "react";
 // postPerPage : 표시 게시글 수
 // setData : response.data
 export const getDiarys = async ({ currentPage, postsPerPage, setData }) => {
-  console.log(currentPage);
-  console.log(postsPerPage);
+  // console.log(currentPage);
+  // console.log(postsPerPage);
 
   // requestParams 설정
   // const requestParams = { };
