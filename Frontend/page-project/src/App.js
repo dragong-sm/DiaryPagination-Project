@@ -11,7 +11,7 @@ import EditPage from "./pages/EditPage";
 
 function App() {
   const [data, setData] = useState([]); // 불러온 data
-  const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
+  const [currentPage, setCurrentPage] = useState(0); // 현재 페이지
   const [postsPerPage, setPostsPerPage] = useState(5); // 한 페이지당 게시글 수
 
   // 다이어리 불러오기 : getDiarys(currentPage, postPerPage, setData)
@@ -42,9 +42,12 @@ function App() {
         <Route
           path="/content/:currentPage/:postNo"
           element={<ContentPage postsPerPage={postsPerPage} />}
-        />
+        ></Route>
         {/* 게시글 수정 : EditPage */}
-        <Route path="/edit/:currentPage/:postNo" element={<EditPage />} />
+        <Route
+          path="content/:currentPage/:postNo/edit-post"
+          element={<EditPage />}
+        />
         {/* 에러 : ErrorPage */}
         <Route path="*" element={<ErrorPage />} />
       </Routes>

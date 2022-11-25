@@ -16,7 +16,7 @@ const Contents = ({ contents, currentPage, postNo }) => {
       <a href="http://localhost:3000/">
         <button>🏡 Home</button>
       </a>
-      <Link to={`/edit/${currentPage}/${postNo}`}>
+      <Link to="edit-post">
         <button>🔨 Edit</button>
       </Link>
     </div>
