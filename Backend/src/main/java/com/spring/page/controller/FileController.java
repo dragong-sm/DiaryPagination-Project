@@ -30,12 +30,11 @@ public class FileController {
 	@GetMapping("/download")
 	public ResponseEntity<Resource> downloadFile(@RequestParam Long fileId){
 		String url = fileService.getUrl(fileId);
-		Path path = Paths.get("C:\\Dev\\Projects\\mini_Project_Page\\Backend\\src\\main\\resources\\static\\test.txt");
-		System.out.println(path);
+		Path path = Paths.get(url);
 		Resource resource = null;
 		try {
 			resource = new InputStreamResource(Files.newInputStream(path));
-			System.out.println(resource);
+			System.out.println(fileService.getFileName(fileId));
 			if (resource != null) {
 				HttpHeaders headers = new HttpHeaders();
 				headers.setContentDisposition(ContentDisposition.builder("attachment").filename(fileService.getFileName(fileId)).build());
