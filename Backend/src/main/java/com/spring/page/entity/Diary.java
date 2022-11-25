@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -19,7 +18,6 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.spring.page.dto.DiaryDTO;
-import com.spring.page.dto.FileDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -69,7 +67,7 @@ public class Diary {
 									.createdDate(diary.getWrittenDate())
 									.modifiedDate(diary.getModifiedDate())
 									.fileDTO(diary.files.stream()
-									.map(file -> file.entityToDTO(file))
+									.map(file -> File.entityToDTO(file))
 									.collect(Collectors.toList()))
 									.build();
 		return diaryDTO;
