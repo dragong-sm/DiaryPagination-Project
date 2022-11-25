@@ -1,6 +1,7 @@
 package com.spring.page.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import com.spring.page.entity.Diary;
 
@@ -19,7 +20,7 @@ public class DiaryDTO {
 	private String content;
 	private LocalDateTime createdDate;
 	private LocalDateTime modifiedDate;
-	private FileDTO fileDTO;
+	private List<FileDTO> fileDTO;
 	
 	// DTO -> Entity
 	public Diary dtoToEntity(DiaryDTO diaryDTO) {

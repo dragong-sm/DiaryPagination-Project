@@ -3,6 +3,7 @@ package com.spring.page.service;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.page.dto.FileDTO;
@@ -11,6 +12,7 @@ import com.spring.page.entity.File;
 import com.spring.page.repository.DiaryRepository;
 import com.spring.page.repository.FileRepository;
 
+@Service
 public class FileServiceImpl implements FileService {
 	
 	@Autowired

@@ -29,14 +29,9 @@ public class DiaryServiceImpl implements DiaryService {
 	@Override
 	public DiaryDTO getDiary(Long diaryNo) {
 		Optional<Diary> diary = diaryRepository.findById(diaryNo);
-		Optional<File> file = fileRepository.getFileByNo(diaryNo);
-		if (diary.isPresent()) {
-			return Diary.entityToDTO(diary.get());
-		} else {
-			//다이어리가 존재하지 않는다는 에러처리!
-			return null;
+		System.out.println(diary);
+		return Diary.entityToDTO(diary.get());
 		}
-	}
 
 	@Override
 	public PageResultDTO getDiaryList(Pageable pageable) {

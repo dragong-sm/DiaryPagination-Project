@@ -36,7 +36,6 @@ public class DiaryController {
 	@GetMapping("/diary/{diaryNo}") 
 	public DiaryDTO getDiary(@PathVariable("diaryNo") Long diaryNo) {
 		
-		// 다이어리 번호를 받아 다이어리 객체 및 파일 반환
 		return diaryService.getDiary(diaryNo);
 	}
 
@@ -65,28 +64,28 @@ public class DiaryController {
 		diaryService.deleteDiary(diaryNo);
 	}
 
-		//기타
-		// 대용량 데이터 입력
-		@GetMapping("/batch")
-		public void insertBatchData() {
-			List<DiaryDTO> diaryList = new ArrayList<DiaryDTO>();
-			// List<FileDTO> fileList = new ArrayList<FileDTO>();
-			IntStream.rangeClosed(101, 300).forEach(i -> {
-				
-				DiaryDTO diaryDTO = DiaryDTO.builder()
-											.title("Title " + i)
-											.content("Content " + i)
-											.build();
-				diaryList.add(diaryDTO);
-	
-			// 	FileDTO fileDTO = FileDTO.builder()
-			// 								.fileName("fileName " + i)
-			// 								.filePath("filePath " + i)
-			// 								.build();
-			// 	fileList.add(fileDTO);
-			});
+	//기타
+	//대용량 데이터 입력
+	@GetMapping("/batch")
+	public void insertBatchData() {
+		List<DiaryDTO> diaryList = new ArrayList<DiaryDTO>();
+		// List<FileDTO> fileList = new ArrayList<FileDTO>();
+		IntStream.rangeClosed(101, 300).forEach(i -> {
 			
-			diaryService.insertBatchData(diaryList);
-			// fileSerivce.insertBatchData(fileList);
-		}
+			DiaryDTO diaryDTO = DiaryDTO.builder()
+										.title("Title " + i)
+										.content("Content " + i)
+										.build();
+			diaryList.add(diaryDTO);
+
+		// 	FileDTO fileDTO = FileDTO.builder()
+		// 								.fileName("fileName " + i)
+		// 								.filePath("filePath " + i)
+		// 								.build();
+		// 	fileList.add(fileDTO);
+		});
+		
+		diaryService.insertBatchData(diaryList);
+		// fileSerivce.insertBatchData(fileList);
+	}
 }

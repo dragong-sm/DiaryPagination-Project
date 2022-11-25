@@ -10,6 +10,7 @@ import com.spring.page.dto.DiaryDTO;
 
 public interface DiaryService {
   
+//  public DiaryDTO getDiary(Long diaryNo);
   public DiaryDTO getDiary(Long diaryNo);
   public PageResultDTO getDiaryList(Pageable pageable);
   public Long insertDiary(DiaryDTO diaryDTO);
