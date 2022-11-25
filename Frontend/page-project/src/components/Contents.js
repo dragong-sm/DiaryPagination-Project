@@ -23,17 +23,17 @@ const Contents = ({ post, currentPage, postNo, setCurrentPost }) => {
       <div>{post.content}</div>
       {files ? ( // file이 있다면 이름/경로 출력 ! (map 에러 해결)
         <div>
+          <h3> 파일목록 </h3>
           {files.map((file) => (
-            <div key={file.fileName}>
-              <h3> 파일목록 </h3>
+            <div key={file.no}>
               <div>
-                <ul>- 파일이름 : {file.fileName}</ul>
-                <ul>
-                  - 파일경로 : {""} {/* 띄어쓰기 */}
-                  <a href={`${file.filePath}`} target="_blank">
-                    {file.filePath}
+                <div>
+                  {file.no} : {""} {/* 띄어쓰기 */}
+                  {/* <a href={`${file.filePath}`} target="_blank"> */}
+                  <a href={`http://localhost:8080/download?fileId=${file.no}`}>
+                    {file.fileName}
                   </a>
-                </ul>
+                </div>
               </div>
             </div>
           ))}
