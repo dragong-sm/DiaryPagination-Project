@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,9 +28,14 @@ import com.spring.page.dto.DiaryDTO;
 import com.spring.page.service.DiaryServiceImpl;
 import com.spring.page.service.FileServiceImpl;
 
+
+
+
 @CrossOrigin({"*"})
 @RestController
 public class DiaryController {	
+	//
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());	
 
 	@Autowired
 	DiaryServiceImpl diaryService;
@@ -37,7 +46,7 @@ public class DiaryController {
 	//1. Diary 번호로 조회
 	@GetMapping("/diary/{diaryNo}") 
 	public DiaryDTO getDiary(@PathVariable("diaryNo") Long diaryNo) {
-		
+		logger.info("getDiary() 호출됨. diaryNo : {} ", diaryNo);
 		return diaryService.getDiary(diaryNo);
 	}
 
@@ -66,28 +75,16 @@ public class DiaryController {
 		diaryService.deleteDiary(diaryNo);
 	}
 
-	//기타
-	//대용량 데이터 입력
-	@GetMapping("/batch")
-	public void insertBatchData() {
-		List<DiaryDTO> diaryList = new ArrayList<DiaryDTO>();
-		// List<FileDTO> fileList = new ArrayList<FileDTO>();
-		IntStream.rangeClosed(101, 300).forEach(i -> {
-			
-			DiaryDTO diaryDTO = DiaryDTO.builder()
-										.title("Title " + i)
-										.content("Content " + i)
-										.build();
-			diaryList.add(diaryDTO);
-
-		// 	FileDTO fileDTO = FileDTO.builder()
-		// 								.fileName("fileName " + i)
-		// 								.filePath("filePath " + i)
-		// 								.build();
-		// 	fileList.add(fileDTO);
-		});
-		
-		diaryService.insertBatchData(diaryList);
-		// fileSerivce.insertBatchData(fileList);
+	//Exception 테스트용 메소드
+	@GetMapping("/diary/error")
+	public void error() {
+		throw new RuntimeException("Test Exception");
 	}
+
+	//Exception Handling
+@ExceptionHandler(RuntimeException.class)
+public String handleRuntimeException(RuntimeException e) {
+	logger.error("RuntimeException : {}", e.getMessage());
+	return "error";
+}
 }
