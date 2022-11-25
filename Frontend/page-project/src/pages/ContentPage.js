@@ -6,8 +6,10 @@ import styled from "styled-components";
 import { getDiary } from "../api/getDiary";
 import Article from "../components/Article";
 import Contents from "../components/Contents";
+import EditPage from "./EditPage";
+import { Route, Router, Routes } from "react-router-dom";
 
-function ContentPage() {
+function ContentPage({ setCurrentPost }) {
   const [post, setPost] = useState([]); // post 한개만 불러오기
 
   const { currentPage, postNo } = useParams(); // parameter
@@ -30,9 +32,10 @@ function ContentPage() {
           <div>
             <Article post={post}></Article>
             <Contents
-              contents={post.content}
+              post={post}
               currentPage={currentPage}
               postNo={postNo}
+              setCurrentPost={setCurrentPost}
             ></Contents>
           </div>
         ) : (
