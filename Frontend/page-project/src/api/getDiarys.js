@@ -15,7 +15,7 @@ export const getDiarys = async ({ currentPage, postsPerPage, setData }) => {
 
   // Test용
   const response = await axios.get(
-    `http://localhost:8080/page?page=${currentPage}&size=${postsPerPage}` // requestParams로 변경필요!
+    `http://localhost:8080/diary/page?page=${currentPage}&size=${postsPerPage}` // requestParams로 변경필요!
   );
 
   // requestParams 사용한 변경

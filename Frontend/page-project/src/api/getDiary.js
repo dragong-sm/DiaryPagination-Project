@@ -1,4 +1,4 @@
-// 다이어리불러오기
+// 다이어리 한개만 불러오기
 
 import axios from "axios";
 import { useEffect, useState } from "react";
