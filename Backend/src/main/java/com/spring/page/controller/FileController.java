@@ -32,18 +32,18 @@ public class FileController {
 		String url = fileService.getUrl(fileId);
 		Path path = Paths.get(url);
 		Resource resource = null;
+		HttpHeaders headers = new HttpHeaders();
 		try {
 			resource = new InputStreamResource(Files.newInputStream(path));
-			System.out.println(fileService.getFileName(fileId));
-			if (resource != null) {
-				HttpHeaders headers = new HttpHeaders();
-				headers.setContentDisposition(ContentDisposition.builder("attachment").filename(fileService.getFileName(fileId)).build());
-				
-				return new ResponseEntity<Resource>(resource, headers, HttpStatus.OK);
-			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return null;
+		if (resource != null) {
+			headers.setContentDisposition(ContentDisposition.builder("attachment").filename(fileService.getFileName(fileId)).build());
+			return new ResponseEntity<Resource>(resource, headers, HttpStatus.OK);
+		}else {
+			headers = null;
+			return new ResponseEntity<Resource>(resource, headers, HttpStatus.NOT_FOUND); // 파일이 없으면 Not Found 뜨도록 변경
+		}
 	}
 }

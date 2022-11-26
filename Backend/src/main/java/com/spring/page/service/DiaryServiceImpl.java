@@ -28,7 +28,6 @@ public class DiaryServiceImpl implements DiaryService {
 	@Override
 	public DiaryDTO getDiary(Long diaryNo) {
 		Optional<Diary> diary = diaryRepository.findById(diaryNo);
-		System.out.println(diary);
 		return Diary.entityToDTO(diary.get());
 		}
 
