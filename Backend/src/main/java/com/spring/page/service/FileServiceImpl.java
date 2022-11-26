@@ -1,5 +1,6 @@
 package com.spring.page.service;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +37,14 @@ public class FileServiceImpl implements FileService {
 	}
 	
 	public String getUrl(Long fileId) {
-		File file = fileRepo.getFileByNo(fileId);
-		return file.getFilePath();
+		Optional<File> file = fileRepo.findFileByNo(fileId);
+		FileDTO fileDTO = File.entityToDTO(file.get());
+		return fileDTO.getFilePath();
 	}
 
 	public String getFileName(Long fileId) {
-		File file = fileRepo.getFileByNo(fileId);
-		return file.getFileName();
+		Optional<File> file = fileRepo.findFileByNo(fileId);
+		FileDTO fileDTO = File.entityToDTO(file.get());
+		return fileDTO.getOriginalFileName();
 	}
 }

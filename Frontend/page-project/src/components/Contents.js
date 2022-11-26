@@ -31,7 +31,7 @@ const Contents = ({ post, currentPage, postNo, setCurrentPost }) => {
                   {file.no} : {""} {/* 띄어쓰기 */}
                   {/* <a href={`${file.filePath}`} target="_blank"> */}
                   <a href={`http://localhost:8080/download?fileId=${file.no}`}>
-                    {file.fileName}
+                    {file.originalFileName}
                   </a>
                 </div>
               </div>

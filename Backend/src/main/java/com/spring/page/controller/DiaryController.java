@@ -82,9 +82,9 @@ public class DiaryController {
 	}
 
 	//Exception Handling
-@ExceptionHandler(RuntimeException.class)
-public String handleRuntimeException(RuntimeException e) {
-	logger.error("RuntimeException : {}", e.getMessage());
-	return "error";
+	@ExceptionHandler(RuntimeException.class)
+	public String handleRuntimeException(RuntimeException e) {
+		logger.error("RuntimeException : {}", e.getMessage());
+		return "error";
 }
 }

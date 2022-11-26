@@ -43,7 +43,7 @@ public class File {
 		this.diary = diary;
 	}
 	
-	public FileDTO entityToDTO(File file) {
+	public static FileDTO entityToDTO(File file) {
 		FileDTO fileDTO = FileDTO.builder()
 								.no(file.getNo())
 								.originalFileName(file.getOriginalFileName() + " / UUID = " + UUID.randomUUID().toString())

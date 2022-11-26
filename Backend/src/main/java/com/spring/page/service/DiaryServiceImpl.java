@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import com.spring.page.common.dto.PageResultDTO;
 import com.spring.page.dto.DiaryDTO;
 import com.spring.page.entity.Diary;
-import com.spring.page.entity.File;
 import com.spring.page.repository.DiaryRepository;
 import com.spring.page.repository.FileRepository;
 
@@ -29,12 +28,11 @@ public class DiaryServiceImpl implements DiaryService {
 	@Override
 	public DiaryDTO getDiary(Long diaryNo) {
 		Optional<Diary> diary = diaryRepository.findById(diaryNo);
-		System.out.println(diary);
 		return Diary.entityToDTO(diary.get());
 		}
 
 	@Override
-	public PageResultDTO getDiaryList(Pageable pageable) {
+	public PageResultDTO<DiaryDTO, Diary> getDiaryList(Pageable pageable) {
 		
 		Page<Diary> result = diaryRepository.findAll(pageable);
 		
