@@ -2,8 +2,10 @@
 
 // import styled from "styled-components";
 import React from "react";
+import { Link } from "react-router-dom";
 import Pagination from "../components/Pagination";
 import Posts from "../components/Posts";
+import InsertPage from "./InsertPage";
 
 /*
     1. 페이지당 출력 개수(10) postsPerPage
@@ -24,6 +26,9 @@ const HomePage = ({
       <h1>Site Name - HomePage</h1>
       {/* 게시글목록 : posts */}
       {/* posts */}
+      <Link to="/insert">
+        <button>등록하기</button>
+      </Link>
       <Posts
         data={data}
         currentPage={currentPage}
