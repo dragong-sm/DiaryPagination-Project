@@ -1,9 +1,5 @@
 package com.spring.page.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.IntStream;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.page.common.dto.PageResultDTO;
 import com.spring.page.dto.DiaryDTO;
+import com.spring.page.entity.Diary;
 import com.spring.page.service.DiaryServiceImpl;
 import com.spring.page.service.FileServiceImpl;
 
@@ -52,7 +49,7 @@ public class DiaryController {
 
 	//2. Diary 목록 조회 - 페이징 처리 포함
 	@GetMapping("/diary/page") 
-	public PageResultDTO getDiaryList(@RequestParam int size, @RequestParam int page) {
+	public PageResultDTO<DiaryDTO, Diary> getDiaryList(@RequestParam int size, @RequestParam int page) {
 		Pageable pageable = PageRequest.of(page, size); 
 		return diaryService.getDiaryList(pageable);
 	}

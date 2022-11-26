@@ -7,8 +7,6 @@ import java.util.stream.IntStream;
 
 import org.springframework.data.domain.Page;
 
-import com.spring.page.entity.Diary;
-
 import lombok.Data;
 
 @Data
