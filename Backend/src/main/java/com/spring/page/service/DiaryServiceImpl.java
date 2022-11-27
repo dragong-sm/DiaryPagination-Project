@@ -33,11 +33,8 @@ public class DiaryServiceImpl implements DiaryService {
 
 	@Override
 	public PageResultDTO<DiaryDTO, Diary> getDiaryList(Pageable pageable) {
-		
 		Page<Diary> result = diaryRepository.findAll(pageable);
-		
 		Function<Diary, DiaryDTO> fn = (diary -> Diary.entityToDTO(diary));
-		
 		return new PageResultDTO<DiaryDTO, Diary>(result, fn);
 	}
 	
@@ -62,7 +59,6 @@ public class DiaryServiceImpl implements DiaryService {
 
 	@Override
 	public void insertBatchData(List<DiaryDTO> diaryList) {
-		
 		List<Diary> entities = diaryList.stream()
 										.map(diaryDTO -> diaryDTO.dtoToEntity(diaryDTO))
 										.collect(Collectors.toList());

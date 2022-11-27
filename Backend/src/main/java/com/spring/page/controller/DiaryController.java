@@ -81,7 +81,7 @@ public class DiaryController {
 	//Exception Handling
 	@ExceptionHandler(RuntimeException.class)
 	public String handleRuntimeException(RuntimeException e) {
-		logger.error("RuntimeException : {}", e.getMessage());
-		return "error";
+		logger.error("RuntimeException : {}", e.getMessage()); // 콘솔에서 출력되는 텍스트
+		return "error"; // 프론트 화면에서 출력되는 텍스트 (단순히 텍스트 말고 상세한 로그들을 반환하고 싶으면 ResponseEntity 이용)
 }
 }
