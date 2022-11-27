@@ -25,13 +25,10 @@ import com.spring.page.entity.Diary;
 import com.spring.page.service.DiaryServiceImpl;
 import com.spring.page.service.FileServiceImpl;
 
-
-
-
 @CrossOrigin({"*"})
 @RestController
 public class DiaryController {	
-	//
+	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());	
 
 	@Autowired
@@ -83,5 +80,5 @@ public class DiaryController {
 	public String handleRuntimeException(RuntimeException e) {
 		logger.error("RuntimeException : {}", e.getMessage()); // 콘솔에서 출력되는 텍스트
 		return "error"; // 프론트 화면에서 출력되는 텍스트 (단순히 텍스트 말고 상세한 로그들을 반환하고 싶으면 ResponseEntity 이용)
-}
+	}
 }

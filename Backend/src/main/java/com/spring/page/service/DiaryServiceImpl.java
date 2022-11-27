@@ -64,6 +64,4 @@ public class DiaryServiceImpl implements DiaryService {
 										.collect(Collectors.toList());
 		diaryRepository.saveAll(entities);
 	}
-
-
 }
